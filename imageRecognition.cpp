@@ -7,10 +7,6 @@ ImageRecognition::ImageRecognition() {/*Constructor that does nothing*/}
 // a container for the five peaks on the same profile of a thread
 vector<Point> fivePeaks;
 
-void ImageRecognition::onMouse(int event, int x, int y, void* userdata) {
-	ImageRecognition* ir = reinterpret_cast<ImageRecognition *>(userdata);
-	ir->onMouse(event, x, y);
-}
 
 // click handler for getPixelsBetweenThreads
 void ImageRecognition::onMouse(int event, int x, int y/*, void* imgptr*/) {
@@ -40,12 +36,10 @@ void ImageRecognition::onMouse(int event, int x, int y/*, void* imgptr*/) {
  */
 int ImageRecognition::getPixelsBetweenThreads(const char* infile, const char* outfile) {
 	Mat src = imread(infile, 0);
-
 	if (src.empty()) {
 		cout << "can not open " << infile << endl;
 		return -1;
 	}
-
 	Mat blackAndWhite, cdst;
 	Canny(src, blackAndWhite, 0, 200, 3);
 	cvtColor(blackAndWhite, cdst, CV_GRAY2BGR);
@@ -53,10 +47,9 @@ int ImageRecognition::getPixelsBetweenThreads(const char* infile, const char* ou
 	namedWindow("DRAW ON HERE", CV_WINDOW_AUTOSIZE);
 	imshow("DRAW ON HERE", blackAndWhite);
 
-	//http://stackoverflow.com/questions/25748404/how-to-use-cvsetmousecallback-in-class
+	// http://stackoverflow.com/questions/25748404/how-to-use-cvsetmousecallback-in-class
 	this->imgptr = &blackAndWhite;
-	setMouseCallback("DRAW ON HERE", this->onMouse, this);
-	
+	setMouseCallback("DRAW ON HERE", ImageRecognition::onMouse, this);
 	char k = waitKey(0);
 	if (k == 'ESC') {
 		return 0;

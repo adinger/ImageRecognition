@@ -33,7 +33,10 @@ private: // helpers for the functions above
 	double getAverageDistance(vector<Point> points);
 	// click handler for getPixelsBetweenThreads
 	void onMouse(int event, int x, int y);
-	static void onMouse(int event, int x, int y, void* userdata);
+	static void onMouse(int event, int x, int y, int, void* userdata) {
+		ImageRecognition* ir = reinterpret_cast<ImageRecognition *>(userdata);
+		ir->onMouse(event, x, y);
+	}
 };
 
 #endif

@@ -1,16 +1,21 @@
-﻿Build started 3/7/2016 11:46:27 AM.
+﻿Build started 3/7/2016 12:08:49 PM.
      1>Project "C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\CannyStill1\CannyStill1.vcxproj" on node 2 (Build target(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (hough.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt imageRecognition.cpp tests.cpp
-         tests.cpp
          imageRecognition.cpp
-     1>c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(58): error C2664: 'void cv::setMouseCallback(const cv::String &,cv::MouseCallback,void *)': cannot convert argument 2 from 'overloaded-function' to 'cv::MouseCallback'
-         c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(58): note: None of the functions with this name in scope match the target type
-     1>c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(221): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(214): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
          Generating Code...
-     1>Done Building Project "C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\CannyStill1\CannyStill1.vcxproj" (Build target(s)) -- FAILED.
+     1>c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(57): warning C4715: 'ImageRecognition::getPixelsBetweenThreads': not all control paths return a value
+     1>c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(86): warning C4715: 'ImageRecognition::getThreadPeakDiameter': not all control paths return a value
+         Skipping... (no relevant changes detected)
+         tests.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\x64\Debug\CannyStill1.exe" /INCREMENTAL /NOLOGO opencv_world310d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\x64\Debug\CannyStill1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\x64\Debug\CannyStill1.lib" /MACHINE:X64 x64\Debug\imageRecognition.obj
+         x64\Debug\tests.obj
+         CannyStill1.vcxproj -> C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\x64\Debug\CannyStill1.exe
+     1>Done Building Project "C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\CannyStill1\CannyStill1.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:02.92
+Time Elapsed 00:00:03.57
