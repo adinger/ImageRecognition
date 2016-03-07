@@ -1,0 +1,16 @@
+﻿Build started 3/7/2016 11:46:27 AM.
+     1>Project "C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\CannyStill1\CannyStill1.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (hough.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt imageRecognition.cpp tests.cpp
+         tests.cpp
+         imageRecognition.cpp
+     1>c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(58): error C2664: 'void cv::setMouseCallback(const cv::String &,cv::MouseCallback,void *)': cannot convert argument 2 from 'overloaded-function' to 'cv::MouseCallback'
+         c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(58): note: None of the functions with this name in scope match the target type
+     1>c:\users\angelalin\documents\visual studio 2015\projects\cannystill1\cannystill1\imagerecognition.cpp(221): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+         Generating Code...
+     1>Done Building Project "C:\Users\AngelaLin\Documents\Visual Studio 2015\Projects\CannyStill1\CannyStill1\CannyStill1.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.92
