@@ -86,42 +86,46 @@ int ImageRecognition::getThreadPeakDiameter(const char* infile, const char* outf
 }
 
 int ImageRecognition::detectCircles(const char* infile, const char* outfile) {
-	Mat src, edges, gray, blurred;
+	Mat src, src_gray;
 
 	/// Read the image
 	src = imread(infile, 1);
-	imshow("Original", src);
 
 	if (!src.data) return -1;
-	
-	cvtColor(src, gray, CV_BGR2GRAY);
-	// smooth it, otherwise a lot of false circles may be detected
-	GaussianBlur(gray, gray, Size(9,9), 2, 2);
+
+	/// Convert it to gray
+	cvtColor(src, src_gray, CV_BGR2GRAY);
+
+	/// Reduce the noise so we avoid false circle detection
+	GaussianBlur(src_gray, src_gray, Size(9, 9), 2, 2);
+
 	vector<Vec3f> circles;
-	Canny(src, edges, 100, 200, 3, false); imshow("Canny", edges);
-	//HoughCircles(gray, circles, CV_HOUGH_GRADIENT, 2, 1, 100, 200, 0, 1000);
-	HoughCircles(gray, circles, CV_HOUGH_GRADIENT, 2, 10, 200, 100, 0, 1000);	// gets innermost circle very well
-	// HoughCircles(image, circles, method, dp, minDist, cannyHighThresh, minVotes, minRadius=0, maxRadius=0 )
+
+	/// Apply the Hough Transform to find the circles
+	HoughCircles(src_gray, circles, CV_HOUGH_GRADIENT, 1, 5,
+		200, 100, 0, 0);
+	// void HoughCircles(InputArray image, OutputArray circles, int method, double dp, double minDist, 
+	//						double param1=100, double param2=100, int minRadius=0, int maxRadius=0 )
 
 	/// Draw the circles detected
-	for (size_t i = 0; i < circles.size(); i++) {
+	for (size_t i = 0; i < circles.size(); i++)
+	{
 		Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
 		int radius = cvRound(circles[i][2]);
 		// circle center
 		circle(src, center, 3, Scalar(0, 255, 0), -1, 8, 0);
 		// circle outline
-		circle(src, center, radius, Scalar(0, 0, 255), 2, 8, 0);
-		//circle(Mat& img, Point center, int radius, const Scalar& color, int thickness=1, int lineType=8, int shift=0)
+		circle(src, center, radius, Scalar(0, 0, 255), 3, 8, 0);
 	}
 
-	// Show results
+	/// Show your results
 	namedWindow("Hough Circle Transform Demo", CV_WINDOW_AUTOSIZE);
-	imshow("Hough Circle Transform Demo", src);
+	imshow(outfile, src);
 	imwrite(outfile, src);
+
 	waitKey(0);
 	return 0;
 }
-
 int ImageRecognition::detectLines(const char* infile, const char* outfile) {
 	Mat src = imread(infile, 0);
 
